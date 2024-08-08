@@ -237,6 +237,7 @@ export const useVacanciesStore = defineStore('vacancies', () => {
     const searchQuery = ref<string>('')
     const salaryFrom = ref<number>(0)
     const salaryTo = ref<number>(Infinity)
+    const isSortDescending = ref<boolean | 'noSort' >('noSort')
 
     const setSalaryFrom = (event: Event) => {
         const target = event.target as HTMLInputElement 
@@ -280,7 +281,20 @@ export const useVacanciesStore = defineStore('vacancies', () => {
             return vacancy.salary.value >= salaryFrom.value && vacancy.salary.value <= (!salaryTo.value ? Infinity : salaryTo.value)
         })
 
-        return salaryFilteredVacancies
+        let salarySortedVacancies = salaryFilteredVacancies
+        
+        if (isSortDescending.value !== 'noSort') {
+            salarySortedVacancies = salaryFilteredVacancies.sort((vacancy1, vacancy2) => {
+                if (isSortDescending.value) {
+                    return vacancy2.salary.value - vacancy1.salary.value
+                } else {
+                    return vacancy1.salary.value - vacancy2.salary.value
+                }
+            })
+        }
+
+
+        return salarySortedVacancies
     })
 
     return {
@@ -293,6 +307,7 @@ export const useVacanciesStore = defineStore('vacancies', () => {
         setSalaryFrom,
         salaryFrom,
         setSalaryTo,
-        salaryTo
+        salaryTo,
+        isSortDescending
     }
 })
