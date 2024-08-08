@@ -234,8 +234,15 @@ export const useVacanciesStore = defineStore('vacancies', () => {
 
     }
 
+    const searchQuery = ref<string>('')
+
     const filteredVacancies = computed(() => {
-        return vacancyItems.value.filter((vacancy) => !vacancy.isHide)
+        const searchQueryLowerCase = searchQuery.value.toLowerCase()
+        return vacancyItems.value.filter((vacancy) => {
+            if (!vacancy.isHide ) {
+               return vacancy.title.toLowerCase().includes(searchQueryLowerCase)
+            }
+        })
     })
 
     return {
@@ -243,6 +250,7 @@ export const useVacanciesStore = defineStore('vacancies', () => {
         getVacanciesList,
         selectedCurrency,
         currencies,
-        hideVacancy
+        hideVacancy,
+        searchQuery
     }
 })

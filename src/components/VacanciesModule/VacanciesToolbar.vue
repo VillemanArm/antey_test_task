@@ -1,6 +1,11 @@
 <template>
     <div class="toolbar">
-        <span>Vacancies toolbar</span>
+        <input 
+          type="text" 
+          v-model="vacanciesStore.searchQuery"
+          placeholder="Search"
+          class="toolbar__search-input"
+        />
         <select 
           class="toolbar__currency-select"
           v-model="vacanciesStore.selectedCurrency"
@@ -33,6 +38,12 @@ const handleCurrencyChange = (currency: CurrencyNames)  => {
   display: flex
   margin-bottom: 32rem
 
+.toolbar__currency-select
+  border-radius: 4rem
 
+.toolbar__search-input
+  height: 28rem
+  width: 320rem
+  padding: 0 8rem
 
 </style>
