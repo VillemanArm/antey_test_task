@@ -6,7 +6,7 @@ declare global {
         id: number
         title: string
         salary: Salary
-
+        isHide: boolean
     }
 
     interface VacancyListFilterParameters {
@@ -53,7 +53,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 2,
@@ -70,7 +71,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 3,
@@ -87,7 +89,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 4,
@@ -104,7 +107,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 5,
@@ -121,7 +125,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 6,
@@ -138,7 +143,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 7,
@@ -155,7 +161,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 8,
@@ -172,7 +179,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 9,
@@ -189,7 +197,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 10,
@@ -206,7 +215,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 11,
@@ -223,7 +233,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 12,
@@ -240,7 +251,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 13,
@@ -257,7 +269,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 14,
@@ -274,7 +287,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 15,
@@ -291,7 +305,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 16,
@@ -308,7 +323,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 17,
@@ -325,7 +341,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 18,
@@ -342,7 +359,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 19,
@@ -359,7 +377,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             },
             {
                 "id": 20,
@@ -376,15 +395,18 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                             "coefficient": 1
                         }
                     ]
-                }
+                },
+                "isHide": false
             }
         ]
 
     }
 
+    const currency = ref<CurrencyNames>('RUB')
 
     return {
         vacancyItems,
-        getVacanciesList
+        getVacanciesList,
+        currency
     }
 })

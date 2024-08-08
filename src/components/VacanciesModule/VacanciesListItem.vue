@@ -6,7 +6,12 @@
         <span>{{vacancy.title}}</span>
         <div class="item__wrapper">
           <span>{{vacancy.salary.value}}</span>
-          <button type="button">Hide</button>
+          <span>{{ vacanciesStore.currency }}</span>
+          <button 
+            type="button"
+          >
+            Hide
+          </button>
         </div>
 
     </RouterLink>
@@ -14,13 +19,13 @@
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
-
+import { useVacanciesStore } from '@/stores/VacanciesStore'
 
 defineProps<{
     vacancy: VacancyItem
 }>()
 
-
+const vacanciesStore = useVacanciesStore()
 </script>
 
 <style scoped lang="sass">
@@ -28,7 +33,7 @@ defineProps<{
 
 .item
   width: 1200rem
-  min-height: 64rem
+  min-height: 60rem
   padding: 0 32rem
   display: flex
   justify-content: space-between
@@ -50,6 +55,17 @@ defineProps<{
     display: inline-block
     align-self: center
     text-align: start
+
+  button
+    margin-left: 8rem
+
+    background-color: $primary-color
+    border: 1px solid $primary-color
+    color: $secondary-font-color
+
+    &:hover
+      background-color: transparent
+      color: $primary-color
 
 .item__wrapper
   display: flex
