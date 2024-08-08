@@ -235,14 +235,52 @@ export const useVacanciesStore = defineStore('vacancies', () => {
     }
 
     const searchQuery = ref<string>('')
+    const salaryFrom = ref<number>(0)
+    const salaryTo = ref<number>(Infinity)
+
+    const setSalaryFrom = (event: Event) => {
+        const target = event.target as HTMLInputElement 
+        if (target.value) {
+            const value = Math.round(Number(target.value))
+            if (value < 0) {
+                target.value = '0'
+            } else {
+                target.value = String(value)
+            }
+            salaryFrom.value = Number(target.value)
+        }
+    }
+
+    const setSalaryTo = (event: Event) => {
+        const target = event.target as HTMLInputElement 
+        if (target.value) {
+            let value = Math.round(Number(target.value))
+            if (value < 0) {
+                target.value = '0'
+            } else if (value < salaryFrom.value) {
+                target.value = String(salaryFrom.value)
+            } else {
+                target.value = String(value)
+            }
+            salaryTo.value = Number(target.value)
+        }
+    }
 
     const filteredVacancies = computed(() => {
         const searchQueryLowerCase = searchQuery.value.toLowerCase()
-        return vacancyItems.value.filter((vacancy) => {
+
+        const searchedVacancies =  vacancyItems.value.filter((vacancy) => {
             if (!vacancy.isHide ) {
-               return vacancy.title.toLowerCase().includes(searchQueryLowerCase)
+                return vacancy.title.toLowerCase().includes(searchQueryLowerCase)
             }
         })
+
+        const salaryFilteredVacancies = searchedVacancies.filter((vacancy) => {
+
+            return vacancy.salary.value >= salaryFrom.value && vacancy.salary.value <= (!salaryTo.value ? Infinity : salaryTo.value)
+        })
+
+        return salaryFilteredVacancies
     })
 
     return {
@@ -251,6 +289,10 @@ export const useVacanciesStore = defineStore('vacancies', () => {
         selectedCurrency,
         currencies,
         hideVacancy,
-        searchQuery
+        searchQuery,
+        setSalaryFrom,
+        salaryFrom,
+        setSalaryTo,
+        salaryTo
     }
 })

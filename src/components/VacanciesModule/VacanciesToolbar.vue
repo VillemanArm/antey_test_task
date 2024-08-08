@@ -2,7 +2,7 @@
     <div class="toolbar">
         <input 
           type="text" 
-          v-model="vacanciesStore.searchQuery"
+          v-model.trim="vacanciesStore.searchQuery"
           placeholder="Search"
           class="toolbar__search-input"
         />
@@ -10,8 +10,28 @@
           class="toolbar__currency-select"
           v-model="vacanciesStore.selectedCurrency"
         >
-          <option v-for="currency in vacanciesStore.currencies" :value="currency" :key="currency">{{ currency }}</option>
+          <option 
+            v-for="currency in vacanciesStore.currencies" 
+            :value="currency" 
+            :key="currency"
+          >
+            {{ currency }}
+          </option>
         </select>
+        <span>Salary size:</span>
+        <span>from</span>
+        <input 
+          class="toolbar__salary-input" 
+          type="number"
+          @change="handleSalaryFromInput($event)"
+        >
+        <span>to</span>
+        <input
+          class="toolbar__salary-input" 
+          type="number"
+          :value="vacanciesStore.salaryTo !== Infinity ? vacanciesStore.salaryTo : ''"
+          @change="handleSalaryToInput($event)"
+        >
     </div>
 </template>
 
@@ -26,9 +46,12 @@ import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 
 const vacanciesStore = useVacanciesStore()
 
-const handleCurrencyChange = (currency: CurrencyNames)  => {
-  vacanciesStore.selectedCurrency = currency
-  
+const handleSalaryFromInput = (event: Event) => {
+    vacanciesStore.setSalaryFrom(event)
+}
+
+const handleSalaryToInput = (event: Event) => {
+    vacanciesStore.setSalaryTo(event)
 }
 </script>
 
@@ -37,12 +60,17 @@ const handleCurrencyChange = (currency: CurrencyNames)  => {
 .toolbar
   display: flex
   margin-bottom: 32rem
+  align-items: center
 
+  input
+    height: 28rem
+    
 .toolbar__currency-select
+  height: 28rem
+
   border-radius: 4rem
 
 .toolbar__search-input
-  height: 28rem
   width: 320rem
   padding: 0 8rem
 
