@@ -1,7 +1,7 @@
 <template>
-    <RouterLink
-        :to="`vacancy/:${vacancy.id}`"
+    <div
         class="item"
+        @click="handleItemClick"
     >
         <span>{{vacancy.title}}</span>
         <div class="item__wrapper">
@@ -9,23 +9,35 @@
           <span>{{ vacanciesStore.currency }}</span>
           <button 
             type="button"
+            @click.stop="handleHideClick"
           >
             Hide
           </button>
         </div>
 
-    </RouterLink>
+    </div>
 </template>
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import { useVacanciesStore } from '@/stores/VacanciesStore'
+import {useRouter} from 'vue-router'
 
-defineProps<{
+const props = defineProps<{
     vacancy: VacancyItem
 }>()
 
 const vacanciesStore = useVacanciesStore()
+const router = useRouter()
+
+const handleHideClick = () => {
+  vacanciesStore.hideVacancy(props.vacancy.id)
+  
+}
+
+const handleItemClick = () => {
+  router.push(`vacancy/:${props.vacancy.id}`) 
+}
 </script>
 
 <style scoped lang="sass">

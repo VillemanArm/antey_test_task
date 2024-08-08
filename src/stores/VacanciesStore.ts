@@ -404,9 +404,23 @@ export const useVacanciesStore = defineStore('vacancies', () => {
 
     const currency = ref<CurrencyNames>('RUB')
 
+    const hideVacancy = (id: number) => {
+        for (let i = 0; i < vacancyItems.value.length; i++) {
+            if (vacancyItems.value[i].id === id) {
+                vacancyItems.value[i].isHide = true
+            }
+        }
+
+    }
+
+    const filteredVacancies = computed(() => {
+        return vacancyItems.value.filter((vacancy) => !vacancy.isHide)
+    })
+
     return {
-        vacancyItems,
+        filteredVacancies,
         getVacanciesList,
-        currency
+        currency,
+        hideVacancy
     }
 })

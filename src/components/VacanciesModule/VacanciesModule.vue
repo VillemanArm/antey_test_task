@@ -3,7 +3,7 @@
         <VacanciesToolbar />
         <div class="list__items">
             <VacanciesListItem
-                v-for="vacancy in vacanciesStore.vacancyItems.slice(
+                v-for="vacancy in vacanciesStore.filteredVacancies.slice(
                     displayedItemsFrom,
                     displayedItemsTo
                 )"
@@ -40,7 +40,7 @@ const vacanciesStore = useVacanciesStore()
 const currentPage = ref<number>(1)
 const itemsByPage = ref<number>(10)
 const maxPages = computed(() =>
-    Math.ceil(vacanciesStore.vacancyItems.length / itemsByPage.value)
+    Math.ceil(vacanciesStore.filteredVacancies.length / itemsByPage.value)
 )
 const displayedItemsFrom = computed(
     () => (currentPage.value - 1) * itemsByPage.value
