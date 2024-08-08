@@ -1,6 +1,12 @@
 <template>
     <div class="toolbar">
         <span>Vacancies toolbar</span>
+        <select 
+          class="toolbar__currency-select"
+          v-model="vacanciesStore.selectedCurrency"
+        >
+          <option v-for="currency in vacanciesStore.currencies" :value="currency" :key="currency">{{ currency }}</option>
+        </select>
     </div>
 </template>
 
@@ -15,6 +21,10 @@ import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 
 const vacanciesStore = useVacanciesStore()
 
+const handleCurrencyChange = (currency: CurrencyNames)  => {
+  vacanciesStore.selectedCurrency = currency
+  
+}
 </script>
 
 <style scoped lang="sass">

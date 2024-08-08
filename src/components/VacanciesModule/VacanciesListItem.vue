@@ -5,8 +5,8 @@
     >
         <span>{{vacancy.title}}</span>
         <div class="item__wrapper">
-          <span>{{vacancy.salary.value}}</span>
-          <span>{{ vacanciesStore.currency }}</span>
+          <span>{{ salaryInSelectedCurrency }}</span>
+          <span>{{ vacanciesStore.selectedCurrency }}</span>
           <button 
             type="button"
             @click.stop="handleHideClick"
@@ -29,6 +29,8 @@ const props = defineProps<{
 
 const vacanciesStore = useVacanciesStore()
 const router = useRouter()
+
+const salaryInSelectedCurrency = computed(() => Math.round(props.vacancy.salary.value  * props.vacancy.salary.currencies[vacanciesStore.selectedCurrency]))
 
 const handleHideClick = () => {
   vacanciesStore.hideVacancy(props.vacancy.id)

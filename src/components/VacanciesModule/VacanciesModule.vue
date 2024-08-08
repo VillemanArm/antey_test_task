@@ -27,9 +27,7 @@ import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
 import VacanciesToolbar from './VacanciesToolbar.vue'
 import VacanciesListItem from './VacanciesListItem.vue'
 import BasePagination from '../ui/BasePagination.vue'
-
 import { useVacanciesStore } from '@/stores/VacanciesStore'
-
 
 // //defineProps<{
 // //	msg: string;

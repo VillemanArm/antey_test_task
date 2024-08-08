@@ -15,21 +15,21 @@ declare global {
         salaryTo: number
         sortDescending: boolean
     }
+    
+    type CurrencyNames = 'USD' | 'RUB'
 }
 
 type VacancySortOptions = 'title' | 'salary' | ''
 
 interface Salary {
     value: number
-    currencies: Currency[]
+    currencies: Currencies
 }
 
-interface Currency {
-    label: CurrencyNames
-    coefficient: number
+interface Currencies {
+    RUB: number
+    USD: number
 }
-
-type CurrencyNames = 'USD' | 'RUB'
 
 export const useVacanciesStore = defineStore('vacancies', () => {
 
@@ -42,17 +42,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 1,
                 "title": "Driver",
                 "salary": {
-                    "value": 10000,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 100000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -60,17 +51,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 2,
                 "title": "Engineer",
                 "salary": {
-                    "value": 15000,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 150000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -78,17 +60,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 3,
                 "title": "Manager",
                 "salary": {
-                    "value": 12000,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 120000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -96,17 +69,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 4,
                 "title": "Teacher",
                 "salary": {
-                    "value": 9000,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 90000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -114,17 +78,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 5,
                 "title": "Designer",
                 "salary": {
-                    "value": 11000,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 110000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -132,17 +87,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 6,
                 "title": "Developer",
                 "salary": {
-                    "value": 13000,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 130000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -150,17 +96,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 7,
                 "title": "Nurse",
                 "salary": {
-                    "value": 8500,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 85000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -168,17 +105,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 8,
                 "title": "Doctor",
                 "salary": {
-                    "value": 20000,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 200000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -186,17 +114,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 9,
                 "title": "Chef",
                 "salary": {
-                    "value": 9500,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 95000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -204,17 +123,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 10,
                 "title": "Pilot",
                 "salary": {
-                    "value": 22000,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 220000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -222,17 +132,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 11,
                 "title": "Driver",
                 "salary": {
-                    "value": 10500,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 105000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -240,17 +141,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 12,
                 "title": "Engineer",
                 "salary": {
-                    "value": 14500,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 145000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -258,17 +150,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 13,
                 "title": "Manager",
                 "salary": {
-                    "value": 12500,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 125000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -276,17 +159,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 14,
                 "title": "Teacher",
                 "salary": {
-                    "value": 9500,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 95000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -294,17 +168,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 15,
                 "title": "Designer",
                 "salary": {
-                    "value": 11500,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 115000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -312,17 +177,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 16,
                 "title": "Developer",
                 "salary": {
-                    "value": 13500,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 135000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -330,17 +186,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 17,
                 "title": "Nurse",
                 "salary": {
-                    "value": 8700,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 87000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -348,17 +195,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 18,
                 "title": "Doctor",
                 "salary": {
-                    "value": 20500,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 205000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -366,17 +204,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 19,
                 "title": "Chef",
                 "salary": {
-                    "value": 9800,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 98000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             },
@@ -384,17 +213,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
                 "id": 20,
                 "title": "Pilot",
                 "salary": {
-                    "value": 22500,
-                    "currencies": [
-                        {
-                            "label": "USD",
-                            "coefficient": 0.012
-                        },
-                        {
-                            "label": "RUB",
-                            "coefficient": 1
-                        }
-                    ]
+                    "value": 225000,
+                    "currencies": { "RUB": 1, "USD": 0.012}
                 },
                 "isHide": false
             }
@@ -402,7 +222,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
 
     }
 
-    const currency = ref<CurrencyNames>('RUB')
+    const selectedCurrency = ref<CurrencyNames>('RUB')
+    const currencies = ['RUB', 'USD']
 
     const hideVacancy = (id: number) => {
         for (let i = 0; i < vacancyItems.value.length; i++) {
@@ -420,7 +241,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
     return {
         filteredVacancies,
         getVacanciesList,
-        currency,
+        selectedCurrency,
+        currencies,
         hideVacancy
     }
 })
