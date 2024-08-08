@@ -38,7 +38,7 @@ import { useVacanciesStore } from '@/stores/VacanciesStore'
 const vacanciesStore = useVacanciesStore()
 
 const currentPage = ref<number>(1)
-const itemsByPage = ref<number>(7)
+const itemsByPage = ref<number>(10)
 const maxPages = computed(() =>
     Math.ceil(vacanciesStore.vacancyItems.length / itemsByPage.value)
 )
@@ -59,23 +59,24 @@ onMounted(() => {
 
 <style scoped lang="sass">
 .list
-  width: 1209rem
-  padding: 32rem 45rem 0 45rem
+  width: 1200rem
+  margin: 0 auto
+  padding-top: 16rem
 
   text-align: center
 
 .list__toolbar
   display: flex
-  margin-bottom: 44rem
+  margin-bottom: 32rem
 
 .list__items
-  min-height: 700rem
-  margin-bottom: 32rem
+  min-height: 747rem
+  margin-bottom: 24rem
   display: grid
-  gap: 16rem
+  gap: 12rem
   align-content: start
 
 .list__pagination
-  margin-bottom: 32rem
+  margin-bottom: 24rem
   float: right
 </style>

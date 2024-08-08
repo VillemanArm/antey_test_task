@@ -383,11 +383,8 @@ export const useVacanciesStore = defineStore('vacancies', () => {
     }
 
 
-
-
     return {
         vacancyItems,
         getVacanciesList
-
     }
 })

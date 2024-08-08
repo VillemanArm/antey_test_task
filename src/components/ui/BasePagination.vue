@@ -36,8 +36,8 @@
 
 <script setup lang="ts">
 import {reactive, ref, computed, onMounted, onUpdated, watch} from 'vue'
-import rightArrowIcon from '../icons/right-arrow-icon.vue'
-import leftArrowIcon from '../icons/left-arrow-icon.vue'
+import RightArrowIcon from '../icons/right-arrow-icon.vue'
+import LeftArrowIcon from '../icons/left-arrow-icon.vue'
 
 const {maxPages} = defineProps<{
     maxPages: number
@@ -60,8 +60,8 @@ const handleChangePage = (newPageValue: number) => {
   padding: 1rem
 
   &__btn
-    width: 60rem
-    height: 60rem
+    width: 50rem
+    height: 50rem
 
     & svg
       width: 100%
@@ -72,8 +72,7 @@ const handleChangePage = (newPageValue: number) => {
       cursor: pointer
 
       & svg:hover
-        fill: $active-color
-
+        fill: $primary-color
 
   &__info
     width: 125rem

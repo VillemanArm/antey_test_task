@@ -3,7 +3,11 @@
         :to="`vacancy/:${vacancy.id}`"
         class="item"
     >
-        <span>vacancy</span>
+        <span>{{vacancy.title}}</span>
+        <div class="item__wrapper">
+          <span>{{vacancy.salary.value}}</span>
+          <button type="button">Hide</button>
+        </div>
 
     </RouterLink>
 </template>
@@ -23,12 +27,12 @@ defineProps<{
 @import '@/assets/styles/constants.sass'
 
 .item
-  width: 1119rem
-  min-height: 86rem
+  width: 1200rem
+  min-height: 64rem
   padding: 0 32rem
-  display: grid
-  grid-template-columns: 130rem 270rem 290rem 1fr
-  column-gap: 26rem
+  display: flex
+  justify-content: space-between
+  column-gap: 32rem
 
   font-size: 20rem
 
@@ -47,10 +51,10 @@ defineProps<{
     align-self: center
     text-align: start
 
-
-    // &:not(:last-child)
-    //   padding-right: 30rem
-
+.item__wrapper
+  display: flex
+  align-items: center
+  column-gap: 16rem
 
 
 a:-webkit-any-link

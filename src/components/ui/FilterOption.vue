@@ -59,12 +59,12 @@ defineProps<{
   border-radius: 0
 
   &:hover
-    border-color: $active-color
-    color: $active-color
+    border-color: $primary-color
+    color: $primary-color
 
   &--active
-    border-color: $active-color
-    color: $active-color
+    border-color: $primary-color
+    color: $primary-color
 
 .sort-direction
   display: grid
@@ -76,7 +76,7 @@ defineProps<{
     cursor: pointer
 
     &:hover
-      fill: $active-color
+      fill: $primary-color
 
     &:first-child
       transform: rotate(-90deg)
@@ -84,5 +84,5 @@ defineProps<{
     &:last-child
       transform: rotate(90deg)
   &--active
-    fill: $active-color
+    fill: $primary-color
 </style>
