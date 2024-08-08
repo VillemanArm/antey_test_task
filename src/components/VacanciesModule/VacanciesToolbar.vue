@@ -6,41 +6,45 @@
           placeholder="Search"
           class="toolbar__search-input"
         />
-        <select 
-          class="toolbar__select"
-          v-model="vacanciesStore.selectedCurrency"
-        >
-          <option 
-            v-for="currency in vacanciesStore.currencies" 
-            :value="currency" 
-            :key="currency"
+        <div class="toolbar__wrapper">
+          <span>Currency:</span>
+          <select 
+            class="toolbar__select"
+            v-model="vacanciesStore.selectedCurrency"
           >
-            {{ currency }}
-          </option>
-        </select>
-        <span>Salary size:</span>
-        <span>from</span>
-        <input 
-          class="toolbar__salary-input" 
-          type="number"
-          @change="handleSalaryFromInput($event)"
-        >
-        <span>to</span>
-        <input
-          class="toolbar__salary-input" 
-          type="number"
-          :value="vacanciesStore.salaryTo !== Infinity ? vacanciesStore.salaryTo : ''"
-          @change="handleSalaryToInput($event)"
-        >
-        <span>Sort by salary:</span>
-        <select 
-          class="toolbar__select"
-          v-model="vacanciesStore.isSortDescending"
-        >
-          <option :value="'noSort'" ></option>
-          <option :value="true" >descending</option>
-          <option :value="false" >ascending</option>
-        </select>
+            <option 
+              v-for="currency in vacanciesStore.currencies" 
+              :value="currency" 
+              :key="currency"
+            >
+              {{ currency }}
+            </option>
+          </select>
+          <span>Salary size:</span>
+          <span>from</span>
+          <input 
+            class="toolbar__number-input" 
+            type="number"
+            @change="handleSalaryFromInput($event)"
+          >
+          <span>to</span>
+          <input
+            class="toolbar__number-input" 
+            type="number"
+            :value="vacanciesStore.salaryTo !== Infinity ? vacanciesStore.salaryTo : ''"
+            @change="handleSalaryToInput($event)"
+          >
+          <span>Sort by salary:</span>
+          <select 
+            class="toolbar__select"
+            v-model="vacanciesStore.isSortDescending"
+          >
+            <option :value="'noSort'" ></option>
+            <option :value="true" >descending</option>
+            <option :value="false" >ascending</option>
+          </select>
+        </div>
+
     </div>
 </template>
 
@@ -70,6 +74,7 @@ const handleSalaryToInput = (event: Event) => {
   display: flex
   margin-bottom: 32rem
   align-items: center
+  justify-content: space-between
 
   input
     height: 28rem
@@ -82,5 +87,14 @@ const handleSalaryToInput = (event: Event) => {
 .toolbar__search-input
   width: 320rem
   padding: 0 8rem
+
+.toolbar__number-input
+  width: 100rem
+  padding: 0 8rem
+
+.toolbar__wrapper
+  display: flex
+  align-items: center
+  gap: 16rem
 
 </style>

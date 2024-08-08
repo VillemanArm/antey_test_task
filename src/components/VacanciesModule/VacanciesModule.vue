@@ -68,7 +68,7 @@ onMounted(() => {
   margin-bottom: 32rem
 
 .list__items
-  min-height: 726rem
+  min-height: 712rem
   margin-bottom: 24rem
   display: grid
   gap: 12rem
