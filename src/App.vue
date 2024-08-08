@@ -1,5 +1,5 @@
 <template>
-  <VacanciesModule/>
+  <router-view></router-view>
 
 </template>
 
